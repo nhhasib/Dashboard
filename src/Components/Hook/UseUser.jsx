@@ -11,7 +11,7 @@ const useUser = () => {
     ["user", user?.email],
     async () => {
       const res = await fetch(
-        `http://localhost:5000/user/?email=${user?.email}`,
+        `http://localhost:5000/users/?email=${user?.email}`,
         {
           headers: {
             authorization: `bearer ${token}`,

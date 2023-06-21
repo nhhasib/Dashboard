@@ -13,15 +13,21 @@ import {
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query'
-import ManageItems from './Components/layout/ManageItems.jsx';
-import ManageUsers from './Components/layout/ManageUsers.jsx';
+import ManageItems from './Components/pages/ManageItems.jsx';
+import ManageUsers from './Components/pages/ManageUsers.jsx';
 import Register from './Components/pages/Register.jsx';
+import Home from './Components/layout/Home.jsx';
+import OrderedItem from './Components/pages/OrderedItem.jsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Dashboard></Dashboard>,
     children: [
+      {
+        path: '/',
+        element:<Home></Home>
+    },
       {
         path: '/login',
         element:<Login></Login>
@@ -37,6 +43,10 @@ const router = createBrowserRouter([
       {
         path: '/register',
         element:<Register></Register>
+      },
+      {
+        path: '/orderedItem',
+        element:<OrderedItem></OrderedItem>
       }
     ]
   },

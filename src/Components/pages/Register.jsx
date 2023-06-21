@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
-import { Helmet } from "react-helmet-async";
 import { AuthContext } from "../authProvider/AuthProvider";
 import SocialMediaLogin from "../socialMediaLogin/SocialMediaLogin";
 
@@ -29,8 +28,8 @@ const Register = () => {
         const user = result.user;
         updateUser(name, photo, gander, number, address)
           .then(() => {
-            const saveUser = { name: name, email: email, role: "student" };
-            fetch("https://musi-quest-server.vercel.app/users", {
+            const saveUser = { name: name, email: email, role: "customer" };
+            fetch("http://localhost:5000/users", {
               method: "POST",
               headers: {
                 "content-type": "application/json",
@@ -42,7 +41,7 @@ const Register = () => {
                 if (data.insertedId) {
                   reset();
                   Swal.fire({
-                    position: "top-end",
+                    position: "top-center",
                     icon: "success",
                     title: "User created successfully.",
                     showConfirmButton: false,
@@ -58,9 +57,9 @@ const Register = () => {
 
   return (
     <div>
-      <Helmet>
+      {/* <Helmet>
                 <title>MusiQuest | Register</title>
-            </Helmet>
+            </Helmet> */}
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content">
           <div className="card flex-shrink-0 shadow-2xl bg-base-100">

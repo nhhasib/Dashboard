@@ -120,13 +120,13 @@ const ManageUsers = () => {
                           onClick={() => handleDoctor(user)}
                           className="button"
                         >
-                          Instructor
+                          Doctor
                         </button>
                         <button
                           onClick={() => handleCustomer(user)}
                           className="button"
                         >
-                          Student
+                          Customer
                         </button>
                       </div>
                     ) : user.role === "doctor" ? (
@@ -141,7 +141,7 @@ const ManageUsers = () => {
                           onClick={() => handleCustomer(user)}
                           className="button"
                         >
-                          Student
+                          Customer
                         </button>
                       </div>
                     ) : (
@@ -156,7 +156,7 @@ const ManageUsers = () => {
                           onClick={() => handleDoctor(user)}
                           className="button"
                         >
-                          Instructor
+                          Doctor
                         </button>
                       </div>
                     )}

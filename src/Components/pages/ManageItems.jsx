@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 
 const ManageItems = () => {
     const token = localStorage.getItem("access-token");
-  const { data: itemsData = [], refetch } = useQuery(
+  const { data:itemsData=[], refetch } = useQuery(
     ["items"],
     async () => {
       const res = await fetch("http://localhost:5000/items", {
@@ -56,7 +56,7 @@ const ManageItems = () => {
         }
       });
   };
-  const pendingItems = itemsData.filter((cls) => cls.status == "pending");
+  const pendingItems = itemsData?.filter((i) => i.status == "pending");
     return (
         <div>
             <div className="w-11/12 mx-auto">

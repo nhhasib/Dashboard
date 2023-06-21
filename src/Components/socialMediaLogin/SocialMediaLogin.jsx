@@ -29,7 +29,7 @@ const SocialMediaLogin = () => {
           .then((data) => {
             if (data.insertedId) {
               Swal.fire({
-                position: "top-end",
+                position: "top-center",
                 icon: "success",
                 title: "User created and login successfully.",
                 showConfirmButton: false,

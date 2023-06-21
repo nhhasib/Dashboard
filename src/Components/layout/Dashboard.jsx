@@ -74,10 +74,10 @@ const Dashboard = () => {
             <Link to={'selectedClass'}><FaUsers className="text-orange-500"></FaUsers><p className="font-bold text-sm">Selected Order</p></Link>
                       </li>
                       <li>
-            <Link to={'enrolledClass'}><FaUsers className="text-orange-500"></FaUsers><p className="font-bold text-sm">Already Orderd item</p></Link>
+            <Link to={'orderedItem'}><FaUsers className="text-orange-500"></FaUsers><p className="font-bold text-sm">Already Orderd item</p></Link>
                     </li>
                     <li>
-                  <Link to={'/dashboard'}><FaUser className="text-orange-500"></FaUser><p className="font-bold text-sm">Profile</p></Link>
+                  <Link to={'/'}><FaUser className="text-orange-500"></FaUser><p className="font-bold text-sm">Profile</p></Link>
                 </li>
                   </>
                       }
