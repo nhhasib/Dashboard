@@ -71,7 +71,7 @@ const Dashboard = () => {
                 </li>
                 
                 </> : <><li>
-            <Link to={'selectedClass'}><FaUsers className="text-orange-500"></FaUsers><p className="font-bold text-sm">Selected Order</p></Link>
+            <Link to={'selecteditems'}><FaUsers className="text-orange-500"></FaUsers><p className="font-bold text-sm">Selected Order</p></Link>
                       </li>
                       <li>
             <Link to={'orderedItem'}><FaUsers className="text-orange-500"></FaUsers><p className="font-bold text-sm">Already Orderd item</p></Link>

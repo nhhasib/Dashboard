@@ -18,6 +18,7 @@ import ManageUsers from './Components/pages/ManageUsers.jsx';
 import Register from './Components/pages/Register.jsx';
 import Home from './Components/layout/Home.jsx';
 import OrderedItem from './Components/pages/OrderedItem.jsx';
+import SelectedItem from './Components/pages/SelectedItem.jsx';
 
 const router = createBrowserRouter([
   {
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
       {
         path: '/orderedItem',
         element:<OrderedItem></OrderedItem>
+      },
+      {
+        path: '/selecteditems',
+        element:<SelectedItem></SelectedItem>
       }
     ]
   },
