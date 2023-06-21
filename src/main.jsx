@@ -19,6 +19,8 @@ import Register from './Components/pages/Register.jsx';
 import Home from './Components/layout/Home.jsx';
 import OrderedItem from './Components/pages/OrderedItem.jsx';
 import SelectedItem from './Components/pages/SelectedItem.jsx';
+import MyItems from './Components/pages/Myitems.jsx';
+import AddItems from './Components/pages/AddItems.jsx';
 
 const router = createBrowserRouter([
   {
@@ -34,6 +36,10 @@ const router = createBrowserRouter([
         element:<Login></Login>
       },
       {
+        path: '/register',
+        element:<Register></Register>
+      },
+      {
         path: '/manageItems',
         element:<ManageItems></ManageItems>
       },
@@ -42,16 +48,20 @@ const router = createBrowserRouter([
         element:<ManageUsers></ManageUsers>
       },
       {
-        path: '/register',
-        element:<Register></Register>
-      },
-      {
         path: '/orderedItem',
         element:<OrderedItem></OrderedItem>
       },
       {
         path: '/selecteditems',
         element:<SelectedItem></SelectedItem>
+      },
+      {
+        path: 'myItems',
+        element:<MyItems></MyItems>
+      },
+      {
+        path: '/addItems',
+        element:<AddItems></AddItems>
       }
     ]
   },

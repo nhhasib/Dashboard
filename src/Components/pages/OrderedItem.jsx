@@ -2,8 +2,6 @@ import { useQuery } from "@tanstack/react-query";
 import React, { useContext } from "react";
 import { AuthContext } from "../authProvider/AuthProvider";
 
-
-
 const OrderedItem = () => {
   const { user } = useContext(AuthContext);
   const token = localStorage.getItem("access-token");
@@ -11,7 +9,7 @@ const OrderedItem = () => {
     ["items/ordered", user?.email],
     async () => {
       const res = await fetch(
-        `http://localhost:5000/users/items/ordered/?email=${user?.email}`,
+        `https://dashboard-server-livid.vercel.app/users/items/ordered/?email=${user?.email}`,
         {
           headers: {
             authorization: `bearer ${token}`,
@@ -26,11 +24,8 @@ const OrderedItem = () => {
 
   return (
     <div className="w-11/12 mx-auto">
-      
       <div className="uppercase font-semibold flex justify-evenly items-center my-4 bg-orange-600 py-4 text-white rounded-xl">
-        <h3 className="text-3xl">
-          Total ordered item: {orderedItem?.length}
-        </h3>
+        <h3 className="text-3xl">Total ordered item: {orderedItem?.length}</h3>
         <h3 className="text-3xl">Total Payment Done: ${total}</h3>
       </div>
       <div className="overflow-x-auto">

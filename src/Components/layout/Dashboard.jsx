@@ -4,6 +4,7 @@ import { FaBookReader, FaHome, FaUser, FaUserGraduate, FaUserTie, FaUsers } from
 import logo from '../../assets/logo.png'
 import { AuthContext } from '../authProvider/AuthProvider';
 import useUser from '../Hook/UseUser';
+import text from '../../assets/Doctor Guide.png'
 
 const Dashboard = () => {
     const { user, logoutUser } = useContext(AuthContext);
@@ -37,7 +38,9 @@ const Dashboard = () => {
                 </svg>
               </label>
             </div>
-            <div className="flex-1 px-2 mx-2 lg:hidden">Doctor Guide</div>
+                        <div className="flex-1 px-2 mx-2 lg:hidden">
+                            <img src={text} alt="" />
+            </div>
 
           </div>
           <Outlet></Outlet>
@@ -46,7 +49,10 @@ const Dashboard = () => {
                   <label htmlFor="my-drawer-3" className="drawer-overlay"></label>
           <ul className="menu p-4 w-60 h-full bg-black text-white">
                       {/* Sidebar content here */}
-                      <li><Link to={'/'}><img className="" src={logo} alt="" /></Link></li>
+                        <li><Link to={'/'}>
+                            <div className='flex items-center w-28 gap-2'><img className="" src={logo} alt="" />
+                            <img src={text} alt="" /></div>
+                        </Link></li>
                      <hr /> 
             {
               currentUserStatus?.role=='admin'?<><li>
@@ -67,19 +73,21 @@ const Dashboard = () => {
             <Link to={'myItems'}><FaUsers className="text-orange-500"></FaUsers><p className="font-bold text-sm">My Items</p></Link>
                   </li>
                   <li>
-                  <Link to={'/dashboard'}><FaUser className="text-orange-500"></FaUser><p className="font-bold text-sm">Profile</p></Link>
-                </li>
-                
-                </> : <><li>
-            <Link to={'selecteditems'}><FaUsers className="text-orange-500"></FaUsers><p className="font-bold text-sm">Selected Order</p></Link>
-                      </li>
-                      <li>
-            <Link to={'orderedItem'}><FaUsers className="text-orange-500"></FaUsers><p className="font-bold text-sm">Already Orderd item</p></Link>
-                    </li>
-                    <li>
                   <Link to={'/'}><FaUser className="text-orange-500"></FaUser><p className="font-bold text-sm">Profile</p></Link>
                 </li>
-                  </>
+                
+                            </> : currentUserStatus?.role == 'customer' ?
+                                        <><li>
+                                        <Link to={'selecteditems'}><FaUsers className="text-orange-500"></FaUsers><p className="font-bold text-sm">Selected Order</p></Link>
+                                                  </li>
+                                                  <li>
+                                        <Link to={'orderedItem'}><FaUsers className="text-orange-500"></FaUsers><p className="font-bold text-sm">Already Orderd item</p></Link>
+                                                </li>
+                                                <li>
+                                              <Link to={'/'}><FaUser className="text-orange-500"></FaUser><p className="font-bold text-sm">Profile</p></Link>
+                                            </li>
+                                </> :
+                                        <h1 className='font-bold text-center items-center'>Login Please</h1>
                       }
                       
                       

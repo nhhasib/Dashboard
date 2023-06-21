@@ -5,7 +5,6 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../authProvider/AuthProvider";
 
-
 const SocialMediaLogin = () => {
   const { googleLogin } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -17,8 +16,12 @@ const SocialMediaLogin = () => {
     googleLogin()
       .then((result) => {
         const user = result.user;
-        const saveUser = { name: user.displayName, email: user.email, role:'customer' };
-        fetch("http://localhost:5000/users", {
+        const saveUser = {
+          name: user.displayName,
+          email: user.email,
+          role: "customer",
+        };
+        fetch("https://dashboard-server-livid.vercel.app/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",

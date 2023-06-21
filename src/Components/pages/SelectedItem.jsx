@@ -1,4 +1,3 @@
-
 import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 
@@ -6,6 +5,7 @@ import useSelectedItems from "../Hook/UseSelecetedItems";
 
 const SelectedItem = () => {
   const [selectedItems, refetch] = useSelectedItems();
+  const token = localStorage.getItem("access-token");
 
   // const { name, price, instructor } = selectedClasses;
 
@@ -21,9 +21,12 @@ const SelectedItem = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         fetch(
-          `http://localhost:5000/selectedItems/${item._id}`,
+          `https://dashboard-server-livid.vercel.app/selectedItems/${item._id}`,
           {
             method: "DELETE",
+            headers: {
+              authorization: `bearer ${token}`,
+            },
           }
         )
           .then((res) => res.json())
@@ -44,8 +47,8 @@ const SelectedItem = () => {
       <div className="uppercase font-semibold flex justify-evenly items-center my-4 bg-orange-600 py-4 text-white rounded-xl">
         <h3 className="text-3xl">Total Items: {selectedItems?.length}</h3>
         <h3 className="text-3xl">Total Price: ${total}</h3>
-        
-          <button className="btn btn-warning btn-sm">PAY</button>
+
+        <button className="btn btn-warning btn-sm">PAY</button>
       </div>
       <div className="overflow-x-auto">
         <table className="table">

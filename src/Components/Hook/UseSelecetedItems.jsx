@@ -9,7 +9,7 @@ const useSelectedItems = () => {
     ["selectedClass", user?.email],
     async () => {
       const res = await fetch(
-        `http://localhost:5000/selectedItems/?email=${user?.email}`,
+        `https://dashboard-server-livid.vercel.app/selectedItems/?email=${user?.email}`,
         {
           headers: {
             authorization: `bearer ${token}`,

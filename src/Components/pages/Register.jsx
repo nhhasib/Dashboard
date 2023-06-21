@@ -29,7 +29,7 @@ const Register = () => {
         updateUser(name, photo, gander, number, address)
           .then(() => {
             const saveUser = { name: name, email: email, role: "customer" };
-            fetch("http://localhost:5000/users", {
+            fetch("https://dashboard-server-livid.vercel.app/users", {
               method: "POST",
               headers: {
                 "content-type": "application/json",
@@ -57,9 +57,6 @@ const Register = () => {
 
   return (
     <div>
-      {/* <Helmet>
-                <title>MusiQuest | Register</title>
-            </Helmet> */}
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content">
           <div className="card flex-shrink-0 shadow-2xl bg-base-100">
@@ -148,7 +145,7 @@ const Register = () => {
                       <span className="text-red-600">Photo is required</span>
                     )}
                   </div>
-                  
+
                   <div className="form-control">
                     <label className="label">
                       <span className="label-text">Gander</span>

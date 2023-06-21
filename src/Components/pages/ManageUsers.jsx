@@ -1,28 +1,30 @@
-import { useQuery } from '@tanstack/react-query';
-import React from 'react';
-import Swal from 'sweetalert2';
+import { useQuery } from "@tanstack/react-query";
+import React from "react";
+import Swal from "sweetalert2";
 
 const ManageUsers = () => {
-    const token = localStorage.getItem("access-token");
+  const token = localStorage.getItem("access-token");
   const { data: users = [], refetch } = useQuery(["allUsers"], async () => {
-    const res = await fetch("http://localhost:5000/allUsers", {
-      headers: {
-        authorization: `bearer ${token}`,
-      },
-    });
+    const res = await fetch(
+      "https://dashboard-server-livid.vercel.app/allUsers",
+      {
+        headers: {
+          authorization: `bearer ${token}`,
+        },
+      }
+    );
     return res.json();
   });
 
   const handleAdmin = (user) => {
-    fetch(`http://localhost:5000/users/admin/${user._id}`, {
+    fetch(`https://dashboard-server-livid.vercel.app/users/admin/${user._id}`, {
       method: "PATCH",
       headers: {
         authorization: `bearer ${token}`,
-      }
+      },
     })
       .then((res) => res.json())
       .then((data) => {
-        
         if (data.modifiedCount) {
           refetch();
           Swal.fire({
@@ -37,17 +39,16 @@ const ManageUsers = () => {
   };
   const handleDoctor = (user) => {
     fetch(
-      `http://localhost:5000/users/doctor/${user._id}`,
+      `https://dashboard-server-livid.vercel.app/users/doctor/${user._id}`,
       {
         method: "PATCH",
         headers: {
           authorization: `bearer ${token}`,
-        }
+        },
       }
     )
       .then((res) => res.json())
       .then((data) => {
-        
         if (data.modifiedCount) {
           refetch();
           Swal.fire({
@@ -62,12 +63,15 @@ const ManageUsers = () => {
   };
 
   const handleCustomer = (user) => {
-    fetch(`http://localhost:5000/users/customer/${user._id}`, {
-      method: "PATCH",
-      headers: {
-        authorization: `bearer ${token}`,
+    fetch(
+      `https://dashboard-server-livid.vercel.app/users/customer/${user._id}`,
+      {
+        method: "PATCH",
+        headers: {
+          authorization: `bearer ${token}`,
+        },
       }
-    })
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount) {
@@ -81,13 +85,11 @@ const ManageUsers = () => {
           });
         }
       });
-    };
-    
-    return (
-        <div className="w-11/12 mx-auto">
-      {/* <Helmet>
-                <title>MusiQuest | All Users</title>
-            </Helmet> */}
+  };
+
+  return (
+    <div className="w-11/12 mx-auto">
+      
       <div className="overflow-x-auto">
         <table className="table">
           <thead>
@@ -168,7 +170,7 @@ const ManageUsers = () => {
         </table>
       </div>
     </div>
-    );
+  );
 };
 
 export default ManageUsers;
