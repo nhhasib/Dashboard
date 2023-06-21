@@ -1,4 +1,5 @@
 import React from 'react';
+import SocialMediaLogin from '../socialMediaLogin/SocialMediaLogin';
 
 const Login = () => {
     return (
@@ -28,7 +29,7 @@ const Login = () => {
         <div className="form-control mt-6">
           <button className="btn btn-primary">Login</button>
                             </div>
-                            <Social
+                           <SocialMediaLogin></SocialMediaLogin>
       </div>
     </div>
   </div>

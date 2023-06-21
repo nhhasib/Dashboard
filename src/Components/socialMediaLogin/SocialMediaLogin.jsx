@@ -17,8 +17,8 @@ const SocialMediaLogin = () => {
     googleLogin()
       .then((result) => {
         const user = result.user;
-        const saveUser = { name: user.displayName, email: user.email };
-        fetch("https://musi-quest-server.vercel.app/users", {
+        const saveUser = { name: user.displayName, email: user.email, role:'customer' };
+        fetch("http://localhost:5000/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",

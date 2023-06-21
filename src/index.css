@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.button{
+    background-color: #f47621;
+    padding:12px 18px;
+    border-radius: 6px;
+    color: white;
+    font-weight: 500;
+    margin: 10px 0;
+  }
+  .button:hover{
+    background-color: #f44206;
+  }

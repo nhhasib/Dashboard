@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { FaBookReader, FaHome, FaUser, FaUserGraduate, FaUserTie, FaUsers } from "react-icons/fa";
 import logo from '../../assets/logo.png'
+import { AuthContext } from '../authProvider/AuthProvider';
+import useUser from '../Hook/UseUser';
 
 const Dashboard = () => {
+    const { user, logoutUser } = useContext(AuthContext);
+    const [currentUserStatus]=useUser()
+    const handleLogOut =()=> {
+        logoutUser()
+            .then()
+            .catch()
+    }
     return (
         <div>
              <div className="drawer lg:drawer-open">
@@ -39,39 +48,39 @@ const Dashboard = () => {
                       {/* Sidebar content here */}
                       <li><Link to={'/'}><img className="" src={logo} alt="" /></Link></li>
                      <hr /> 
-            {/* {
+            {
               currentUserStatus?.role=='admin'?<><li>
-              <Link to={'manageClass'}><FaBookReader className="text-orange-500"></FaBookReader><p className="font-bold text-sm">Manage Classes</p></Link>
+              <Link to={'manageItems'}><FaBookReader className="text-orange-500"></FaBookReader><p className="font-bold text-sm">Manage Items</p></Link>
             </li>
             <li>
-            <Link to={'allusers'}><FaUsers className="text-orange-500"></FaUsers><p className="font-bold text-sm">Manage Users</p></Link>
+            <Link to={'manageUsers'}><FaUsers className="text-orange-500"></FaUsers><p className="font-bold text-sm">Manage Users</p></Link>
                 </li>
             <li>
-            <Link to={'/dashboard'}><FaUser className="text-orange-500"></FaUser><p className="font-bold text-sm">Profile</p></Link>
+            <Link to={'/'}><FaUser className="text-orange-500"></FaUser><p className="font-bold text-sm">Profile</p></Link>
                 </li>
                 
 
-              </> : currentUserStatus?.role == 'instructor' ? <><li>
-            <Link to={'addClass'}><FaUsers className="text-orange-500"></FaUsers><p className="font-bold text-sm">Add Class</p></Link>
+              </> : currentUserStatus?.role == 'doctor' ? <><li>
+            <Link to={'addItems'}><FaUsers className="text-orange-500"></FaUsers><p className="font-bold text-sm">Add Item</p></Link>
                       </li>
                       <li>
-            <Link to={'myClass'}><FaUsers className="text-orange-500"></FaUsers><p className="font-bold text-sm">My Classes</p></Link>
+            <Link to={'myItems'}><FaUsers className="text-orange-500"></FaUsers><p className="font-bold text-sm">My Items</p></Link>
                   </li>
                   <li>
                   <Link to={'/dashboard'}><FaUser className="text-orange-500"></FaUser><p className="font-bold text-sm">Profile</p></Link>
                 </li>
                 
                 </> : <><li>
-            <Link to={'selectedClass'}><FaUsers className="text-orange-500"></FaUsers><p className="font-bold text-sm">Selected Classes</p></Link>
+            <Link to={'selectedClass'}><FaUsers className="text-orange-500"></FaUsers><p className="font-bold text-sm">Selected Order</p></Link>
                       </li>
                       <li>
-            <Link to={'enrolledClass'}><FaUsers className="text-orange-500"></FaUsers><p className="font-bold text-sm">Enrolled Classes</p></Link>
+            <Link to={'enrolledClass'}><FaUsers className="text-orange-500"></FaUsers><p className="font-bold text-sm">Already Orderd item</p></Link>
                     </li>
                     <li>
                   <Link to={'/dashboard'}><FaUser className="text-orange-500"></FaUser><p className="font-bold text-sm">Profile</p></Link>
                 </li>
                   </>
-                      } */}
+                      }
                       
                       
                       <hr className="my-8" />
@@ -84,8 +93,15 @@ const Dashboard = () => {
                       <li>
                       <Link to={'/register'}><FaUserTie className="text-orange-500"></FaUserTie><p className="font-bold text-sm">Register</p></Link>
                       </li>
-                      <button className="btn btn-primary">Logout</button>
-          </ul>
+                        <div>
+                        {user?<div className='flex gap-6 justify-center items-center my-6'>
+                        <img className='w-20 h-20 rounded-full' src={user?.photoURL} alt="" />
+                        <button onClick={handleLogOut} className="button">Logout</button>
+                        </div> : <div className='flex justify-center my-6'>
+                        <Link to={'/login'}><button onClick={handleLogOut} className="button">Login</button></Link></div>}
+                        </div>
+                    </ul>
+                    
         </div>
       </div>
         </div>
